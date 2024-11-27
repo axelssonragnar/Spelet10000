@@ -14,9 +14,18 @@ public class AIPlayer : Player
 
     public override void SaveAndRoll(DiceSet diceSet)
     {
-        Console.WriteLine("Välj dem tärningar du vill spara separerade med ',' ");
-        var input = Console.ReadLine();
-        var indices = input.Split(',').Select(int.Parse).ToArray();
-        diceSet.SaveDices(indices);
+        var diceToSave = new List<int>();
+        int index = 0;
+        foreach (var die in diceSet.Dice)
+        {
+            if (die.Value == 1 || die.Value == 5)
+            {
+                diceToSave.Add(index);
+            }
+            index++;
+        }
+        
+        diceSet.SaveDices(diceToSave.ToArray());
+        diceSet.SaveAndRoll();
     }
 }

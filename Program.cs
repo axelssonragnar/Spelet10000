@@ -6,6 +6,10 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        bool istrue = true;
+        while (istrue)
+        {
+            
         DiceSet diceSet = new DiceSet(6);
         diceSet.RollAllDice();
         Console.WriteLine("Tärningarna efter att alla rullats:");
@@ -13,16 +17,8 @@ public class Program
         ScoreCalculator roll = new ScoreCalculator();
         int initialScore = roll.CalculateScore(diceSet);
         Console.WriteLine($"Poäng för första kastet: {initialScore}");
-        Console.WriteLine("Välj dem tärningar du vill spara separerade med ',' ");
-        var input = Console.ReadLine();
-        var indices = input.Split(',').Select(int.Parse).ToArray();
+        Console.ReadKey();
         Console.Clear();
-        diceSet.SaveDices(indices);
-        diceSet.RollAllDice();
-        Console.WriteLine("osparade tärningar rullas om");
-        DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates());
-        int newScore = roll.CalculateScore(diceSet);
-        Console.WriteLine($"Poäng efter omlottning: {newScore}");
-        Console.WriteLine("hallå");
-    }
+        }
+}
 }
