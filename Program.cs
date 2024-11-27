@@ -23,6 +23,6 @@ public class Program
         DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates());
         int newScore = roll.CalculateScore(diceSet);
         Console.WriteLine($"Poäng efter omlottning: {newScore}");
-        
+        Console.WriteLine("hallå");
     }
 }
