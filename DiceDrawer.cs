@@ -17,7 +17,10 @@ namespace _10000
 
         public static void DrawDice(int[] diceValues, bool[] savedDice)
         {
-            for (int row = 0; row < 5; row++)  // loopar genom och skriver ut varje rad 
+            
+            Console.WriteLine(string.Join("     ", Enumerable.Range(1, diceValues.Length).Select(i => $"   ({i})  "))); // visar nummer över tärningarna
+
+            for (int row = 0; row < 5; row++) // loopar genom och skriver ut varje rad 
             {
                 for (int i = 0; i < diceValues.Length; i++)
                 {
@@ -28,18 +31,19 @@ namespace _10000
                     }
                     else
                     {
-                        Console.BackgroundColor = ConsoleColor.Black; 
+                        Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
                     }
-                    
+
                     Console.Write(Dots[diceValues[i] - 1][row] + "  "); // mellanrummet mellan tärningar
-                    
+
                 }
 
                 Console.WriteLine();
-                Console.BackgroundColor = ConsoleColor.Black; 
-                Console.ForegroundColor = ConsoleColor.White; 
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
+
     }
 }

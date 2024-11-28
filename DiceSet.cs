@@ -37,19 +37,22 @@ public class DiceSet
             dice[i].IsSaved = true;
         }
     }
-    public void SaveAndRoll() // metod som kollar vilka tärningar som är sparade och rullar sedan resten
+    public void SaveAndRoll() //kollar vilka tärningar som är osparade och rullar resten igen
     {
-        var unsavedDice = new List<Dice>();
-        foreach (var dice in dice)
+        foreach (var die in dice)
         {
-            if (!dice.IsSaved) 
+            if (!die.IsSaved)
             {
-                unsavedDice.Add(dice);
+                die.Roll();
             }
         }
-        foreach (var dice in unsavedDice)
+    }
+    public void Reset()
+    {
+        foreach (var die in dice)
         {
-            dice.Roll();
+            die.IsSaved = false; // Återställer tärningarna från sparad status
+            die.Roll(); // Rulla tärningen så att nya värden skapas
         }
     }
     public bool[] GetSavedStates() // lägger till denna metod
