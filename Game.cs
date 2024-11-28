@@ -138,7 +138,7 @@ namespace _10000
 
         public void RestartGame()
         {
-            Console.WriteLine("\nVill ni spela igen? (j/n)");
+            Console.WriteLine("\nVill du spela igen? (j/n)");
             string input = Console.ReadLine();
 
             if (input?.ToLower() == "j")
