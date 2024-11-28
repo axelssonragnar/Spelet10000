@@ -10,7 +10,7 @@ namespace _10000
         private readonly ScoreCalculator scoreCalculator;
         private readonly Player[] players;
         private int currentPlayerIndex; 
-        private const int WinningScore = 10000; 
+        private const int WinningScore = 10000;
 
         public Game()
         {
