@@ -16,16 +16,44 @@ public class AIPlayer : Player
     {
         var diceToSave = new List<int>();
         int index = 0;
-        foreach (var die in diceSet.Dice)
+        var diceArray = diceSet.Dice.ToArray();
+
+
+        foreach (var die in diceArray)
         {
-            if (die.Value == 1 || die.Value == 5)
+            if (!die.IsSaved && (die.Value == 1 || die.Value == 5))
             {
                 diceToSave.Add(index);
             }
             index++;
         }
         
+        if (!diceToSave.Any())
+        {
+            index = 0;
+            foreach (var die in diceArray)
+            {
+                if (!die.IsSaved)
+                {
+                    diceToSave.Add(index);
+                    break;
+                }
+                index++;
+            }
+        }
+
+        // Om inga tärningar finns att spara, avslutar turen
+        if (!diceToSave.Any())
+        {
+            Console.WriteLine($"{name} är färdig med sin tur.");
+            return;
+        }
+        
         diceSet.SaveDices(diceToSave.ToArray());
+
+        // Presentera vad AI:n sparade
+        Console.WriteLine($"{name} sparade tärningar på positioner: {string.Join(", ", diceToSave.Select(i => i + 1))}");
+        
         diceSet.SaveAndRoll();
     }
 }
