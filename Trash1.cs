@@ -4,7 +4,7 @@ namespace _10000
     {
         private const int WinningScore = 10000;
 
-        // Metod som kontrollerar om någon spelare har vunnit
+        // Metod som kontrollerar om nÃ¥gon spelare har vunnit
         /*public string CheckWinner(int player1Score, int player2Score)
         {
             Console.WriteLine($"Player1 {player1Score}     Player2 {player2Score}");
@@ -13,7 +13,7 @@ namespace _10000
             {
                 if (player1Score == player2Score)
                 {
-                    return "Båda spelarna har nått samma poäng. Det är oavgjort!";
+                    return "BÃ¥da spelarna har nÃ¥tt samma poÃ¤ng. Det Ã¤r oavgjort!";
                 }
                 else if (player1Score > player2Score)
                 {
@@ -25,7 +25,7 @@ namespace _10000
                 }
                 else
                 {
-                    return "Ingen spelare har nått 10 000 poäng ännu.";
+                    return "Ingen spelare har nÃ¥tt 10 000 poÃ¤ng Ã¤nnu.";
                 }
             }
         }*/
@@ -33,7 +33,7 @@ namespace _10000
         {
             player.score += score;
             Console.SetCursorPosition(10, currentPlayerIndex + 20);
-            Console.Write($"{player.name} har nu {player.score} poäng.");
+            Console.Write($"{player.name} har nu {player.score} poÃ¤ng.");
         }
     }
 }
