@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\axels\\RiderProjects\\Spelet10000\\10000.csproj": {}
+    "C:\\Users\\Håkan\\Source\\Repos\\Spelet10000\\10000.csproj": {}
   },
   "projects": {
-    "C:\\Users\\axels\\RiderProjects\\Spelet10000\\10000.csproj": {
+    "C:\\Users\\Håkan\\Source\\Repos\\Spelet10000\\10000.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\axels\\RiderProjects\\Spelet10000\\10000.csproj",
+        "projectUniqueName": "C:\\Users\\Håkan\\Source\\Repos\\Spelet10000\\10000.csproj",
         "projectName": "10000",
-        "projectPath": "C:\\Users\\axels\\RiderProjects\\Spelet10000\\10000.csproj",
-        "packagesPath": "C:\\Users\\axels\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\axels\\RiderProjects\\Spelet10000\\obj\\",
+        "projectPath": "C:\\Users\\Håkan\\Source\\Repos\\Spelet10000\\10000.csproj",
+        "packagesPath": "C:\\Users\\Håkan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Håkan\\Source\\Repos\\Spelet10000\\obj\\",
         "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\axels\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Håkan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "all"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {

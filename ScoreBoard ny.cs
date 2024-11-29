@@ -1,10 +1,10 @@
-﻿namespace _10000
+namespace _10000
 {
     public class ScoreBoard
     {
         private const int WinningScore = 10000;
 
-        // Metod som kontrollerar om någon spelare har vunnit
+        // Metod som kontrollerar om n�gon spelare har vunnit
         /*public string CheckWinner(int player1Score, int player2Score)
         {
             Console.WriteLine($"Player1 {player1Score}     Player2 {player2Score}");
@@ -13,7 +13,7 @@
             {
                 if (player1Score == player2Score)
                 {
-                    return "Båda spelarna har nått samma poäng. Det är oavgjort!";
+                    return "B�da spelarna har n�tt samma po�ng. Det �r oavgjort!";
                 }
                 else if (player1Score > player2Score)
                 {
@@ -25,7 +25,7 @@
                 }
                 else
                 {
-                    return "Ingen spelare har nått 10 000 poäng ännu.";
+                    return "Ingen spelare har n�tt 10 000 po�ng �nnu.";
                 }
             }
         }*/
@@ -33,7 +33,8 @@
         {
             player.score += score;
             Console.SetCursorPosition(10, currentPlayerIndex + 20);
-            Console.Write($"{player.name} har nu {player.score} poäng.");
+            Console.Write($"{player.name} har nu {player.score} po�ng.");
         }
-    } }
+    }
+}
 
