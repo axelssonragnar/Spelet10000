@@ -6,18 +6,20 @@ namespace _10000
 {
     public class Game
     {
-        private readonly DiceSet diceSet; 
+        private readonly DiceSet diceSet;
         private readonly ScoreCalculator scoreCalculator;
         private readonly Player[] players;
-        public int currentPlayerIndex; 
+        public int currentPlayerIndex;
+        private ScoreBoard scoreBoard; // Changed type from object to ScoreBoard
         private const int WinningScore = 10000;
 
         public Game()
         {
-            diceSet = new DiceSet(6); 
+            diceSet = new DiceSet(6);
             scoreCalculator = new ScoreCalculator();
-            players = new Player[2]; 
-            currentPlayerIndex = 0; 
+            players = new Player[2];
+            currentPlayerIndex = 0;
+            scoreBoard = new ScoreBoard(); // Initialize ScoreBoard
         }
 
         public void WelcomePlayers()
@@ -47,65 +49,65 @@ namespace _10000
             RestartGame();
         }
 
-       public void PlayRound(Player player)
-{
+        public void PlayRound(Player player)
+        {
             Console.SetCursorPosition(10, 10);
             Console.WriteLine($"\n{player.name}'s tur!");
-    diceSet.Reset(); 
+            diceSet.Reset();
 
-    while (true)
-    {
+            while (true)
+            {
                 Console.SetCursorPosition(0, 1);
 
 
                 DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates()); // här ritas tärningarna ut med dicegrafics
 
-      
-        bool validSave = false;
-        while (!validSave)
-        {
-            player.SaveAndRoll(diceSet);              
-            bool[] savedStates = diceSet.GetSavedStates(); // kontrollerar sparade tärningar
-            if (savedStates.Any(saved => saved))
-            {
-                validSave = true;
+
+                bool validSave = false;
+                while (!validSave)
+                {
+                    player.SaveAndRoll(diceSet);
+                    bool[] savedStates = diceSet.GetSavedStates(); // kontrollerar sparade tärningar
+                    if (savedStates.Any(saved => saved))
+                    {
+                        validSave = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Du måste spara minst en tärning för att fortsätta kasta!");
+                        Console.WriteLine("Tryck på valfri tangent för att välja igen...");
+                        Console.ReadKey();
+
+                        DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates());
+                    }
+                }
+
+
+                if (diceSet.GetSavedStates().All(saved => saved)) // kollar ifall alla tärningar är sparade 
+                {
+                    Console.WriteLine("Du kan inte göra fler kast. Turen är slut.");
+                    break;
+                }
+
+                // Rulla om osparade tärningar
+                diceSet.SaveAndRoll();
+
+                // Visa omrullade tärningar
+                Console.WriteLine($"{player.name} rullar om resterande tärningar:");
             }
-            else
-            {
-                Console.WriteLine("Du måste spara minst en tärning för att fortsätta kasta!");
-                Console.WriteLine("Tryck på valfri tangent för att välja igen...");
-                Console.ReadKey();
-                
-                DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates());
-            }
+
+
+            int roundScore = scoreCalculator.CalculateScore(diceSet); // räknar ihop rundans poäng
+            Console.WriteLine($"{player.name} tjänade {roundScore} poäng denna runda!");
+            player.score += roundScore;
+            scoreBoard.UpdateScore(player.name, player.score, currentPlayerIndex);
+
+            Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
+            Console.ReadKey();
+
+
+            diceSet.Reset(); // återställer tärningarna så dem kan rullas om
         }
-
-        
-        if (diceSet.GetSavedStates().All(saved => saved)) // kollar ifall alla tärningar är sparade 
-        {
-            Console.WriteLine("Du kan inte göra fler kast. Turen är slut.");
-            break;
-        }
-
-        // Rulla om osparade tärningar
-        diceSet.SaveAndRoll();
-
-        // Visa omrullade tärningar
-        Console.WriteLine($"{player.name} rullar om resterande tärningar:");
-    }
-
-    
-    int roundScore = scoreCalculator.CalculateScore(diceSet); // räknar ihop rundans poäng
-    Console.WriteLine($"{player.name} tjänade {roundScore} poäng denna runda!");
-    player.score += roundScore;
-            scoreBoard.UpdateScore(player, player.score, currentPlayerIndex);
-    
-    Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
-    Console.ReadKey();
-
-        
-    diceSet.Reset(); // återställer tärningarna så dem kan rullas om
-}
 
 
 

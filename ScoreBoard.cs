@@ -5,7 +5,7 @@
         private const int WinningScore = 10000;
 
         // Metod som kontrollerar om någon spelare har vunnit
-        /*public string CheckWinner(int player1Score, int player2Score)
+        public static string CheckWinner(int player1Score, int player2Score)
         {
             Console.WriteLine($"Player1 {player1Score}     Player2 {player2Score}");
 
@@ -19,21 +19,19 @@
                 {
                     return "Spelare 1 har vunnit!";
                 }
-                else if (player1Score < player2Score)
+                else
                 {
                     return "Spelare 2 har vunnit!";
                 }
-                else
-                {
-                    return "Ingen spelare har nått 10 000 poäng ännu.";
-                }
             }
-        }*/
-        public void UpdateScore(Player player, int score, int currentPlayerIndex)
-        {
-            player.score += score;
-            Console.SetCursorPosition(10, currentPlayerIndex + 20);
-            Console.Write($"{player.name} har nu {player.score} poäng.");
+            return "Ingen spelare har nått 10 000 poäng ännu.";
         }
-    } }
+        public void UpdateScore(string player, int score, int currentPlayerIndex)
+        {
+            
+            Console.SetCursorPosition(10, currentPlayerIndex + 20);
+            Console.Write($"{player} har nu {score} poäng.");
+        }
+    }
+}
 
