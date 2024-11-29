@@ -9,7 +9,7 @@ namespace _10000
         private readonly DiceSet diceSet; 
         private readonly ScoreCalculator scoreCalculator;
         private readonly Player[] players;
-        private int currentPlayerIndex; 
+        public int currentPlayerIndex; 
         private const int WinningScore = 10000;
 
         public Game()
@@ -28,6 +28,23 @@ namespace _10000
 
             players[0] = new HumanPlayer(playerName);
             players[1] = new AIPlayer("AI-Motståndare");
+        }
+        public void StartGame()
+        {
+            WelcomePlayers();
+
+            bool gameOver = false;
+
+            while (!gameOver)
+            {
+                PlayRound(players[currentPlayerIndex]);
+                gameOver = CheckGameOver();
+
+                // Växla tur
+                currentPlayerIndex = (currentPlayerIndex + 1) % 2;
+            }
+
+            RestartGame();
         }
 
        public void PlayRound(Player player)
@@ -80,7 +97,7 @@ namespace _10000
     
     int roundScore = scoreCalculator.CalculateScore(diceSet); // räknar ihop rundans poäng
     Console.WriteLine($"{player.name} tjänade {roundScore} poäng denna runda!");
-    player.score += roundScore;
+    player.score += roundScore; // lägger till rundans poäng 
     
     Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
     Console.ReadKey();
@@ -116,24 +133,6 @@ namespace _10000
                 return true; // Spelet är slut
             }
             return false; // Fortsätt spela
-        }
-
-        public void StartGame()
-        {
-            WelcomePlayers();
-
-            bool gameOver = false;
-
-            while (!gameOver)
-            {
-                PlayRound(players[currentPlayerIndex]);
-                gameOver = CheckGameOver();
-
-                // Växla tur
-                currentPlayerIndex = (currentPlayerIndex + 1) % 2;
-            }
-
-            RestartGame();
         }
 
         public void RestartGame()
