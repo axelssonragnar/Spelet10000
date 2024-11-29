@@ -11,6 +11,7 @@ namespace _10000
         private readonly Player[] players;
         public int currentPlayerIndex; 
         private const int WinningScore = 10000;
+        public ScoreBoard scoreBoard = new ScoreBoard();
 
         public Game()
         {
@@ -49,15 +50,13 @@ namespace _10000
 
        public void PlayRound(Player player)
 {
-    Console.Clear(); 
+    
     Console.WriteLine($"\n{player.name}'s tur!");
     diceSet.Reset(); 
 
     while (true)
     {
-        Console.Clear();
-
-        
+        Console.SetCursorPosition(0, 1);
         DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates()); // här ritas tärningarna ut med dicegrafics
 
       
@@ -72,10 +71,14 @@ namespace _10000
             }
             else
             {
+                Console.SetCursorPosition(0, 7 );
                 Console.WriteLine("Du måste spara minst en tärning för att fortsätta kasta!");
                 Console.WriteLine("Tryck på valfri tangent för att välja igen...");
                 Console.ReadKey();
-                Console.Clear();
+                Console.SetCursorPosition(0,7);
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
                 DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates());
             }
         }
@@ -83,22 +86,25 @@ namespace _10000
         
         if (diceSet.GetSavedStates().All(saved => saved)) // kollar ifall alla tärningar är sparade 
         {
+            Console.SetCursorPosition(0, 9);
             Console.WriteLine("Du kan inte göra fler kast. Turen är slut.");
+            Console.SetCursorPosition(0, 9);
+            Console.WriteLine();
             break;
         }
 
         // Rulla om osparade tärningar
         diceSet.SaveAndRoll();
 
-        // Visa omrullade tärningar
-        Console.WriteLine($"{player.name} rullar om resterande tärningar:");
     }
 
     
     int roundScore = scoreCalculator.CalculateScore(diceSet); // räknar ihop rundans poäng
+    Console.SetCursorPosition(10, 18);
     Console.WriteLine($"{player.name} tjänade {roundScore} poäng denna runda!");
     player.score += roundScore; // lägger till rundans poäng 
-    
+    scoreBoard.UpdateScore(player, player.score, currentPlayerIndex);
+    Console.SetCursorPosition(10, 25);
     Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
     Console.ReadKey();
 
@@ -147,6 +153,7 @@ namespace _10000
                     player.score = 0; // Återställ poäng
                 }
                 currentPlayerIndex = 0; // Starta med första spelaren igen
+                Console.Clear();
                 StartGame();
             }
             else

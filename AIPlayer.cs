@@ -48,12 +48,7 @@ public class AIPlayer : Player
             Console.WriteLine($"{name} är färdig med sin tur.");
             return;
         }
-        
         diceSet.SaveDices(diceToSave.ToArray());
-
-        // Presentera vad AI:n sparade
-        Console.WriteLine($"{name} sparade tärningar på positioner: {string.Join(", ", diceToSave.Select(i => i + 1))}");
-        
         diceSet.SaveAndRoll();
     }
 }

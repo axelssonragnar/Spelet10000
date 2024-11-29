@@ -15,14 +15,18 @@ public class HumanPlayer : Player
 
     public override void SaveAndRoll(DiceSet diceSet)
     {
-        Console.WriteLine("Välj de tärningar du vill spara, separerade med ',");
+        
+        Console.WriteLine("Välj de tärningar du vill spara, separerade med ','");
 
         while (true)
         {
             try
             {
                 // Läs in och justera indexen för att matcha tärningarnas index i listan
+                Console.SetCursorPosition(0, 8);
                 var input = Console.ReadLine();
+                Console.SetCursorPosition(0, 8);
+                Console.Write("            ");
                 var indices = input.Split(',')
                     .Select(num => int.Parse(num.Trim()) - 1) 
                     .ToArray();
