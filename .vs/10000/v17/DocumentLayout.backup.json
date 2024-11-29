@@ -1,0 +1,107 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|c:\\users\\h\u00E5kan\\source\\repos\\spelet10000\\scorecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|solutionrelative:scorecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|c:\\users\\h\u00E5kan\\source\\repos\\spelet10000\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|solutionrelative:game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|c:\\users\\h\u00E5kan\\source\\repos\\spelet10000\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|c:\\users\\h\u00E5kan\\source\\repos\\spelet10000\\diceset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|solutionrelative:diceset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|c:\\users\\h\u00E5kan\\source\\repos\\spelet10000\\dicedrawer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B961B34C-A543-41B7-AB74-50CC32654A79}|10000.csproj|solutionrelative:dicedrawer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ScoreCalculator.cs",
+              "DocumentMoniker": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\ScoreCalculator.cs",
+              "RelativeDocumentMoniker": "ScoreCalculator.cs",
+              "ToolTip": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\ScoreCalculator.cs",
+              "RelativeToolTip": "ScoreCalculator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T07:40:47.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DiceSet.cs",
+              "DocumentMoniker": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\DiceSet.cs",
+              "RelativeDocumentMoniker": "DiceSet.cs",
+              "ToolTip": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\DiceSet.cs",
+              "RelativeToolTip": "DiceSet.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T07:34:48.623Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\Game.cs",
+              "RelativeDocumentMoniker": "Game.cs",
+              "ToolTip": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\Game.cs",
+              "RelativeToolTip": "Game.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowCQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T07:32:44.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T07:32:22.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DiceDrawer.cs",
+              "DocumentMoniker": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\DiceDrawer.cs",
+              "RelativeDocumentMoniker": "DiceDrawer.cs",
+              "ToolTip": "C:\\Users\\H\u00E5kan\\source\\repos\\Spelet10000\\DiceDrawer.cs",
+              "RelativeToolTip": "DiceDrawer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T07:30:15.841Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

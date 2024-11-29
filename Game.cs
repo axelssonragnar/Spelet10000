@@ -49,16 +49,16 @@ namespace _10000
 
        public void PlayRound(Player player)
 {
-    Console.Clear(); 
-    Console.WriteLine($"\n{player.name}'s tur!");
+            Console.SetCursorPosition(10, 10);
+            Console.WriteLine($"\n{player.name}'s tur!");
     diceSet.Reset(); 
 
     while (true)
     {
-        Console.Clear();
+                Console.SetCursorPosition(0, 1);
 
-        
-        DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates()); // här ritas tärningarna ut med dicegrafics
+
+                DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates()); // här ritas tärningarna ut med dicegrafics
 
       
         bool validSave = false;
@@ -75,7 +75,7 @@ namespace _10000
                 Console.WriteLine("Du måste spara minst en tärning för att fortsätta kasta!");
                 Console.WriteLine("Tryck på valfri tangent för att välja igen...");
                 Console.ReadKey();
-                Console.Clear();
+                
                 DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates());
             }
         }
@@ -97,7 +97,8 @@ namespace _10000
     
     int roundScore = scoreCalculator.CalculateScore(diceSet); // räknar ihop rundans poäng
     Console.WriteLine($"{player.name} tjänade {roundScore} poäng denna runda!");
-    player.score += roundScore; // lägger till rundans poäng 
+    player.score += roundScore;
+            scoreBoard.UpdateScore(player, player.score, currentPlayerIndex);
     
     Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
     Console.ReadKey();
