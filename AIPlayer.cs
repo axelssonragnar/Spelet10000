@@ -8,6 +8,7 @@ public class AIPlayer : Player
 
     public override void RollDice(DiceSet diceSet) 
     {
+        
         Console.WriteLine($"{name} rullar tärningarna!");
         diceSet.RollAllDice();
     }
@@ -23,6 +24,7 @@ public class AIPlayer : Player
         {
             if (!die.IsSaved && (die.Value == 1 || die.Value == 5))
             {
+                Thread.Sleep(1000);
                 diceToSave.Add(index);
             }
             index++;

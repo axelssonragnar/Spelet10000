@@ -24,10 +24,12 @@ namespace _10000
 
         public void WelcomePlayers()
         {
+            Console.SetCursorPosition(15, 10);
             Console.WriteLine("Välkommen till 10 000!");
+            Console.SetCursorPosition(15, 11);
             Console.Write("Skriv in ditt namn: ");
             string playerName = Console.ReadLine();
-
+            Console.Clear();
             players[0] = new HumanPlayer(playerName);
             players[1] = new AIPlayer("AI-Motståndare");
         }
@@ -43,6 +45,8 @@ namespace _10000
                 gameOver = CheckGameOver();
 
                 // Växla tur
+                Console.SetCursorPosition(0, 9);
+                Console.WriteLine("                                                                      ");
                 currentPlayerIndex = (currentPlayerIndex + 1) % 2;
             }
 
@@ -52,14 +56,12 @@ namespace _10000
         public void PlayRound(Player player)
         {
             Console.SetCursorPosition(10, 10);
-            Console.WriteLine($"\n{player.name}'s tur!");
+            Console.WriteLine($"\n{player.name}'s tur!                      ");
             diceSet.Reset();
 
             while (true)
             {
                 Console.SetCursorPosition(0, 1);
-
-
                 DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates()); // här ritas tärningarna ut med dicegrafics
 
 
@@ -85,7 +87,8 @@ namespace _10000
 
                 if (diceSet.GetSavedStates().All(saved => saved)) // kollar ifall alla tärningar är sparade 
                 {
-                    Console.WriteLine("Du kan inte göra fler kast. Turen är slut.");
+                    Console.SetCursorPosition(0, 9);
+                    Console.WriteLine("                                               ");
                     break;
                 }
 
@@ -93,24 +96,24 @@ namespace _10000
                 diceSet.SaveAndRoll();
 
                 // Visa omrullade tärningar
-                Console.WriteLine($"{player.name} rullar om resterande tärningar:");
+                Console.WriteLine($"{player.name} rullar om resterande tärningar:                 ");
             }
 
 
             int roundScore = scoreCalculator.CalculateScore(diceSet); // räknar ihop rundans poäng
+            Console.SetCursorPosition(10, 15);
             Console.WriteLine($"{player.name} tjänade {roundScore} poäng denna runda!");
+            Console.ReadKey();
+            Console.SetCursorPosition(10, 15);
+            Console.WriteLine("                                                                                    ");
             player.score += roundScore;
             scoreBoard.UpdateScore(player.name, player.score, currentPlayerIndex);
 
-            Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
             Console.ReadKey();
 
 
             diceSet.Reset(); // återställer tärningarna så dem kan rullas om
         }
-
-
-
 
 
         public bool CheckGameOver()
@@ -150,6 +153,7 @@ namespace _10000
                     player.score = 0; // Återställ poäng
                 }
                 currentPlayerIndex = 0; // Starta med första spelaren igen
+                Console.Clear();
                 StartGame();
             }
             else

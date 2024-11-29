@@ -30,7 +30,7 @@
         {
             
             Console.SetCursorPosition(10, currentPlayerIndex + 20);
-            Console.Write($"{player} har nu {score} poäng.");
+            Console.Write($"{player}:  {score} poäng!");
         }
     }
 }
