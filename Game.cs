@@ -5,17 +5,17 @@
         private readonly DiceSet diceSet;
         private readonly ScoreCalculator scoreCalculator;
         private readonly Player[] players;
-        public int currentPlayerIndex;
-        private ScoreBoard scoreBoard; // Changed type from object to ScoreBoard
+        private int currentPlayerIndex;
+        private ScoreBoard scoreBoard; 
         private const int WinningScore = 10000;
 
         public Game()
         {
             diceSet = new DiceSet(6);
-            scoreCalculator = new ScoreCalculator();
+            scoreCalculator = new ScoreCalculator(diceSet);  
             players = new Player[2];
             currentPlayerIndex = 0;
-            scoreBoard = new ScoreBoard(); // Initialize ScoreBoard
+            scoreBoard = new ScoreBoard(); 
         }
 
         public void WelcomePlayers()
@@ -29,6 +29,7 @@
             players[0] = new HumanPlayer(playerName);
             players[1] = new AIPlayer("AI-Motståndare");
         }
+
         public void StartGame()
         {
             WelcomePlayers();
@@ -57,13 +58,14 @@
 
             while (true)
             {
-                
                 Console.SetCursorPosition(0, 2);
                 
                 int numDice = 6;
                 int scrambleTimes = 10;
                 int delay = 100;
                 bool[] savedStates = diceSet.GetSavedStates();
+                Rules combo = new Rules();
+                combo.DisplayCombinations();
                 DiceGrafics.ScrambleDice(numDice, savedStates, scrambleTimes, delay, diceSet);
                 Console.SetCursorPosition(0, 0);
                 DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates()); // här ritas tärningarna ut med dicegrafics
@@ -88,37 +90,31 @@
                     }
                 }
 
-
                 if (diceSet.GetSavedStates().All(saved => saved)) // kollar ifall alla tärningar är sparade 
                 {
                     Console.SetCursorPosition(0, 9);
-                    Console.WriteLine("                                               ");
+                    Console.WriteLine("                                    ");
                     break;
                 }
 
                 // Rulla om osparade tärningar
                 diceSet.SaveAndRoll();
-
-                // Visa omrullade tärningar
-                Console.WriteLine($"{player.name} rullar om resterande tärningar:                 ");
             }
 
-
-            int roundScore = scoreCalculator.CalculateScore(diceSet); // räknar ihop rundans poäng
+            // Här använder vi den nya Score-egenskapen istället för den gamla CalculateScore-metoden
+            int roundScore = scoreCalculator.Score; // Den nya metoden för att beräkna poängen
             Console.SetCursorPosition(10, 15);
             Console.WriteLine($"{player.name} tjänade {roundScore} poäng denna runda!");
             Console.ReadKey();
             Console.SetCursorPosition(10, 15);
-            Console.WriteLine("                                                                                    ");
+            Console.WriteLine("                                                                       ");
             player.score += roundScore;
             scoreBoard.UpdateScore(player.name, player.score, currentPlayerIndex);
 
             Console.ReadKey();
 
-
             diceSet.Reset(); // återställer tärningarna så dem kan rullas om
         }
-
 
         public bool CheckGameOver()
         {
