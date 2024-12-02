@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-
-namespace _10000
+﻿namespace _10000
 {
     public class Game
     {
@@ -61,7 +57,15 @@ namespace _10000
 
             while (true)
             {
-                Console.SetCursorPosition(0, 1);
+                
+                Console.SetCursorPosition(0, 2);
+                
+                int numDice = 6;
+                int scrambleTimes = 10;
+                int delay = 100;
+                bool[] savedStates = diceSet.GetSavedStates();
+                DiceGrafics.ScrambleDice(numDice, savedStates, scrambleTimes, delay, diceSet);
+                Console.SetCursorPosition(0, 0);
                 DiceGrafics.DrawDice(diceSet.GetValues(), diceSet.GetSavedStates()); // här ritas tärningarna ut med dicegrafics
 
 
@@ -69,7 +73,7 @@ namespace _10000
                 while (!validSave)
                 {
                     player.SaveAndRoll(diceSet);
-                    bool[] savedStates = diceSet.GetSavedStates(); // kontrollerar sparade tärningar
+                    savedStates = diceSet.GetSavedStates(); // kontrollerar sparade tärningar
                     if (savedStates.Any(saved => saved))
                     {
                         validSave = true;
@@ -135,6 +139,8 @@ namespace _10000
                 }
 
                 Player winner = players.OrderByDescending(p => p.score).First();
+                Sound PlaySound = new Sound();
+                PlaySound.PlaySound("Winning");
                 Console.WriteLine($"\nVinnaren är {winner.name} med {winner.score} poäng!");
                 return true; // Spelet är slut
             }
