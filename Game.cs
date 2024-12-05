@@ -148,6 +148,7 @@
                 Player winner = players.OrderByDescending(p => p.score).First();
                 Sound PlaySound = new Sound();
                 PlaySound.PlaySound("Winning");
+                Console.SetCursorPosition(17, 12);
                 Console.WriteLine($"\nVinnaren är {winner.name} med {winner.score} poäng!");
                 return true; // spelet är slut
             }

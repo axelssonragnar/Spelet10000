@@ -22,8 +22,8 @@ public class Rules
 
     public void DisplayCombinations()
     {
-        int x = 90 ; // starting x-position
-        int y = 3;  // starting y-position
+        int x = 85 ; // starting x-position
+        int y = 1;  // starting y-position
     
         string[] combinations = {
             "En 1:a = 100 poäng",
