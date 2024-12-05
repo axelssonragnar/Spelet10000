@@ -2,6 +2,11 @@
 {
     public class Game
     {
+        
+        // KRAV 1:
+        // 1: Inkapsling.
+        // 2: Vi har valt att sätta fält som private eller protected där det går.
+        // 3: Koden blir säkrare och lättare att underhålla när saker bara kan nås från där dem ska nås.
         private readonly DiceSet diceSet;
         private readonly ScoreCalculator scoreCalculator;
         private readonly Player[] players;
@@ -9,13 +14,17 @@
         private ScoreBoard scoreBoard; 
         private const int WinningScore = 10000;
 
-        public Game()
+        // KRAV 5:
+        // 1: Beroendeinjektion.
+        // 2: Vi har valt att ladda konstruktorn till game med alla olika delar som behövs.
+        // 3: Koden blir renare och enklare att underhålla.
+        public Game(DiceSet diceSet, ScoreCalculator scoreCalculator, ScoreBoard scoreBoard, Player player1, Player player2)
         {
-            diceSet = new DiceSet(6);
-            scoreCalculator = new ScoreCalculator(diceSet);  
-            players = new Player[2];
+            this.diceSet = diceSet;
+            this.scoreCalculator = scoreCalculator;
+            this.scoreBoard = scoreBoard;
+            players = new Player[] { player1, player2 };
             currentPlayerIndex = 0;
-            scoreBoard = new ScoreBoard(); 
         }
 
         public void WelcomePlayers()
@@ -33,7 +42,7 @@
         public void StartGame()
         {
             WelcomePlayers();
-
+            
             bool gameOver = false;
 
             while (!gameOver)
@@ -43,14 +52,14 @@
 
                 // Växla tur
                 Console.SetCursorPosition(0, 9);
-                Console.WriteLine("                                                                      ");
+                Console.WriteLine("                                                                  ");
                 currentPlayerIndex = (currentPlayerIndex + 1) % 2;
             }
 
             RestartGame();
         }
 
-        public void PlayRound(Player player)
+        private void PlayRound(Player player)
         {
             Console.SetCursorPosition(10, 10);
             Console.WriteLine($"\n{player.name}'s tur!                      ");
@@ -97,12 +106,12 @@
                     break;
                 }
 
-                // Rulla om osparade tärningar
+                
                 diceSet.SaveAndRoll();
             }
 
-            // Här använder vi den nya Score-egenskapen istället för den gamla CalculateScore-metoden
-            int roundScore = scoreCalculator.Score; // Den nya metoden för att beräkna poängen
+       
+            int roundScore = scoreCalculator.Score; // metoden för att beräkna poäng
             Console.SetCursorPosition(10, 15);
             Console.WriteLine($"{player.name} tjänade {roundScore} poäng denna runda!");
             Console.ReadKey();
@@ -122,25 +131,27 @@
 
             if (leader.score >= WinningScore)
             {
+                Console.SetCursorPosition(8, 11);
                 Console.WriteLine($"\n{leader.name} har nått {WinningScore} poäng!");
+                Console.SetCursorPosition(8, 12);   // om den som börjar når 10000 får den andra spela sin tur också
                 Console.WriteLine("Avslutande tur ges till den andra spelaren...");
 
-                if (currentPlayerIndex == 0) // Om mänskliga spelaren började
+                if (currentPlayerIndex == 0) 
                 {
-                    PlayRound(players[1]); // AI får en sista tur
+                    PlayRound(players[1]); 
                 }
                 else
                 {
-                    PlayRound(players[0]); // Människan får en sista tur
+                    PlayRound(players[0]);
                 }
 
                 Player winner = players.OrderByDescending(p => p.score).First();
                 Sound PlaySound = new Sound();
                 PlaySound.PlaySound("Winning");
                 Console.WriteLine($"\nVinnaren är {winner.name} med {winner.score} poäng!");
-                return true; // Spelet är slut
+                return true; // spelet är slut
             }
-            return false; // Fortsätt spela
+            return false; // fortsätt spela
         }
 
         public void RestartGame()

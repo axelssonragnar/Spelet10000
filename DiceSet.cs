@@ -2,7 +2,12 @@
 
 public class DiceSet
 {
-    private List<Dice> dice;
+    private List<Dice> dice; 
+    
+    // KRAV 4:
+// 1: Objektkomposition.
+// 2: Vi har valt att låta DiceSet bestå av en lista med Dice-objekt.
+// 3: Det ger ökad modifierbarhet.
 
     public DiceSet(int count)
     {

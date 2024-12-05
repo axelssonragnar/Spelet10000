@@ -2,17 +2,19 @@
 {
     public class ScoreCalculator
     {
-        // Privat fält för DiceSet
+  
         private DiceSet DiceSet { get; }
-
-        // Konstruktor som tar ett DiceSet
+        
         public ScoreCalculator(DiceSet diceSet)
         {
             DiceSet = diceSet ?? throw new ArgumentNullException(nameof(diceSet));
         }
 
-        // Computed property för beräknad poäng
-        public int Score
+        // KRAV 3:
+// 1: Computed Properties.
+// 2: Vi använder oss av Computed Properties här för att räkna ihop poängen.
+// 3: Vi valde att göra så för att det känns praktiskt.
+        public int Score 
         {
             get
             {
@@ -47,7 +49,7 @@
                             4 => 2000,
                             5 => 4000,
                             6 => 8000,
-                            _ => count * 100 // 1:or = 100 poäng vardera
+                            _ => count * 100 // 1:or 
                         },
                         5 => count switch
                         {
@@ -55,7 +57,7 @@
                             4 => 1000,
                             5 => 2000,
                             6 => 4000,
-                            _ => count * 50 // 5:or = 50 poäng vardera
+                            _ => count * 50 // 5:or
                         },
                         6 => count switch
                         {

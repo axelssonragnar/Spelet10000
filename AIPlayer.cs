@@ -2,7 +2,7 @@
 
 public class AIPlayer : Player
 {
-    public AIPlayer(string name) : base(name) // skapar en mänsklig spelare med Playerklassens konstruktor
+    public AIPlayer(string name) : base(name) // skapar en AI-spelare med Playerklassens konstruktor
     {
     }
 
@@ -43,8 +43,7 @@ public class AIPlayer : Player
                 index++;
             }
         }
-
-        // Om inga tärningar finns att spara, avslutar turen
+        
         if (!diceToSave.Any())
         {
             Console.WriteLine($"{name} är färdig med sin tur.");
